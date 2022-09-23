@@ -51,9 +51,16 @@ class _AnimationScreenState extends State<AnimationScreen>
     Colors.teal,
     Colors.green
   ];
-  _getRandomColor(List<Color> colors) {
+  _getRandomColor() {
     //return colors[_random.nextInt(colors.length)];
-    return (colors..shuffle(_random)).first;
+    //return (colors..shuffle(_random)).first;
+    //return Colors.primaries[_random.nextInt(Colors.primaries.length)];
+    return Color.fromARGB(
+      _random.nextInt(256),
+      _random.nextInt(256),
+      _random.nextInt(256),
+      _random.nextInt(256),
+    );
   }
 
   late Color _currentColor;
@@ -67,7 +74,7 @@ class _AnimationScreenState extends State<AnimationScreen>
 
       setState(() {
         _tapPosition = tapPosition;
-        _currentColor = _getRandomColor(colors);
+        _currentColor = _getRandomColor();
         _controller.forward();
       });
     }
@@ -76,7 +83,7 @@ class _AnimationScreenState extends State<AnimationScreen>
   @override
   void initState() {
     super.initState();
-    _currentColor = _getRandomColor(colors);
+    _currentColor = _getRandomColor();
     _controller = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
     _controller.forward();
