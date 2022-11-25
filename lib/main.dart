@@ -76,7 +76,7 @@ class _AnimationScreenState extends State<AnimationScreen>
     super.initState();
     _currentColor = _getRandomColor();
     _controller = AnimationController(
-        duration: const Duration(milliseconds: 700), vsync: this);
+        duration: const Duration(milliseconds: 400), vsync: this);
     _controller.forward();
   }
 
